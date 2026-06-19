@@ -9,15 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --pink:        #f7c6d9;
-    --pink-soft:   #fde4ee;
-    --pink-deep:   #e487aa;
-    --purple:      #d7c4ef;
-    --purple-soft: #efe6fb;
-    --white:       #fffafc;
-    --ink:         #6b5566;
-    --ink-soft:    #9a8493;
-    --shadow:      0 18px 50px -20px rgba(196, 124, 160, 0.45);
+    /* Deep Romance palette */
+    --pink:        #ffd2da;   /* blush */
+    --pink-soft:   #fff0f2;   /* light blush */
+    --pink-deep:   #c0143a;   /* crimson accent */
+    --red:         #8b0000;   /* blood red */
+    --purple:      #e8a8b4;   /* warm rose (for gradients) */
+    --purple-soft: #fff8f4;   /* warm ivory */
+    --gold:        #c9a24b;   /* gold accent */
+    --white:       #fff8f4;   /* warm ivory */
+    --ink:         #4a2a30;   /* deep wine text */
+    --ink-soft:    #8a6168;   /* muted mauve */
+    --shadow:      0 18px 50px -20px rgba(139, 0, 0, 0.35);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -171,6 +174,11 @@
   .sec-head { text-align: center; margin-bottom: 56px; }
   .sec-head .script { font-size: clamp(2rem, 6vw, 3.2rem); color: var(--pink-deep); display: block; }
   .sec-head p { color: var(--ink-soft); margin-top: 6px; font-size: 1rem; }
+  /* gold divider under section headings */
+  .sec-head .script::after {
+    content: ""; display: block; width: 64px; height: 2px; margin: 14px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
 
   /* ---------- Gallery ---------- */
   .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 22px; }
@@ -189,7 +197,7 @@
     background: var(--white); border-radius: 28px; max-width: 720px; margin: 0 auto;
     padding: clamp(34px, 6vw, 64px); box-shadow: var(--shadow); position: relative;
   }
-  .letter::before { content: "❝"; font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--pink); position: absolute; top: 10px; left: 26px; line-height: 1; opacity: .6; }
+  .letter::before { content: "❝"; font-family: 'Cormorant Garamond', serif; font-size: 5rem; color: var(--gold); position: absolute; top: 10px; left: 26px; line-height: 1; opacity: .55; }
   .letter h3 { font-family: 'Dancing Script', cursive; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--pink-deep); text-align: center; margin-bottom: 24px; }
   .letter p { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.6vw, 1.35rem); color: var(--ink); margin-bottom: 18px; }
   .letter .sign { text-align: right; font-family: 'Dancing Script', cursive; font-size: 1.7rem; color: var(--pink-deep); margin-top: 14px; }
@@ -202,7 +210,7 @@
     transition: transform .35s ease; border: 1px solid rgba(255,255,255,.6);
   }
   .reason:hover { transform: translateY(-6px) scale(1.02); }
-  .reason .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--pink-deep); line-height: 1; }
+  .reason .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold); line-height: 1; }
   .reason p { margin-top: 8px; font-size: 1rem; color: var(--ink); }
 
   /* ---------- Final ---------- */
