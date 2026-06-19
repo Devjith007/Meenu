@@ -7,7 +7,7 @@ const photos = [
   { cap: "Our first trip", note: "where it all began" },
   { cap: "That perfect sunset", note: "just the two of us" },
   { cap: "Most hated photo 😂", note: "(but I love it)" },
-  { cap: "Your beautiful smile", note: "it melts me every time" },
+  { cap: "Something made you smile", note: "it melts me every time" },
   { cap: "Dancing in the rain", note: "no music needed" },
   { cap: "Coffee & you", note: "a perfect morning" },
   { cap: "Adventure day", note: "always better with you" },
