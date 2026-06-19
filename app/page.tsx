@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const photos = [
   { cap: "Our first trip", note: "where it all began" },
   { cap: "That perfect sunset", note: "just the two of us" },
-  { cap: "Lazy Sunday", note: "my favorite kind of day" },
+  { cap: "Most hated photo 😂", note: "(but I love it)" },
   { cap: "Your beautiful smile", note: "it melts me every time" },
   { cap: "Dancing in the rain", note: "no music needed" },
   { cap: "Coffee & you", note: "a perfect morning" },
