@@ -173,6 +173,41 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  /* ---------- Preloader ---------- */
+  #preloader {
+    position: fixed; inset: 0; z-index: 200;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 24px;
+    background: radial-gradient(circle at 50% 35%, #b00018 0%, #8b0000 45%, #5e0010 100%);
+    color: #fff;
+    transition: opacity .9s ease, visibility .9s ease;
+  }
+  #preloader.hide { opacity: 0; visibility: hidden; }
+  #preloader .pl-heart {
+    font-size: clamp(3.4rem, 12vw, 5.5rem);
+    animation: beat 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
+  }
+  #preloader .pl-quote {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 5.5vw, 2.6rem);
+    color: #fff; line-height: 1.5; max-width: 600px; margin-top: 26px;
+    opacity: 0; animation: pl-fade 1.1s ease .35s forwards;
+    text-shadow: 0 2px 14px rgba(0,0,0,.35);
+  }
+  #preloader .pl-dots {
+    margin-top: 30px; display: flex; gap: 10px;
+    opacity: 0; animation: pl-fade 1s ease .8s forwards;
+  }
+  #preloader .pl-dots span {
+    width: 11px; height: 11px; border-radius: 50%; background: #fff;
+    animation: pl-bounce 1.2s ease-in-out infinite;
+  }
+  #preloader .pl-dots span:nth-child(2) { animation-delay: .18s; }
+  #preloader .pl-dots span:nth-child(3) { animation-delay: .36s; }
+  @keyframes pl-fade { to { opacity: 1; } }
+  @keyframes pl-bounce { 0%,100% { transform: translateY(0); opacity: .55; } 50% { transform: translateY(-12px); opacity: 1; } }
+
   /* ---------- Opening burst overlay ---------- */
   #burst {
     position: fixed; inset: 0; z-index: 60; pointer-events: none;
@@ -213,6 +248,13 @@
 </style>
 </head>
 <body>
+
+<!-- preloader -->
+<div id="preloader">
+  <div class="pl-heart">❤️</div>
+  <p class="pl-quote">Roses are red,<br />violets are blue,<br />I am so lucky<br />to have you.</p>
+  <div class="pl-dots"><span></span><span></span><span></span></div>
+</div>
 
 <!-- opening burst -->
 <div id="burst" aria-hidden="true">
@@ -289,12 +331,26 @@
 <footer>Made with love, just for you. 🎂✨</footer>
 
 <script>
-  /* ---------- Opening burst of flowers & hearts ---------- */
+  /* ---------- Preloader → reveal site, then burst ---------- */
   (function () {
+    const pre = document.getElementById('preloader');
+    if (!pre) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hold = reduce ? 600 : 2800;
+    function finish() {
+      pre.classList.add('hide');
+      setTimeout(() => pre.remove(), 1000);
+      if (!reduce) runBurst();
+    }
+    window.addEventListener('load', () => setTimeout(finish, hold));
+    // safety net in case the load event already fired
+    if (document.readyState === 'complete') setTimeout(finish, hold);
+  })();
+
+  /* ---------- Opening burst of flowers & hearts ---------- */
+  function runBurst() {
     const layer = document.getElementById('burst');
     if (!layer) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { layer.style.display = 'none'; return; }
 
     const glyphs = ['🌸','💖','🌷','💕','🌹','💗','🌼','❤️','💐','✨','🌺'];
     const total = window.innerWidth < 600 ? 36 : 60;
@@ -314,7 +370,7 @@
     }
     // remove overlay once everything has settled so it never blocks the page
     setTimeout(() => layer.remove(), 3200);
-  })();
+  }
 
   /* ---------- Floating hearts ---------- */
   (function () {
