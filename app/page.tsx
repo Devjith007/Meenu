@@ -10,7 +10,6 @@ const photos = [
   { cap: "Something made you smile", note: "it melts me every time" },
   { cap: "Dancing in the rain", note: "no music needed" },
   { cap: "Coffee & you", note: "a perfect morning" },
-  { cap: "Adventure day", note: "always better with you" },
   { cap: "Just us", note: "and that's everything" },
 ];
 
