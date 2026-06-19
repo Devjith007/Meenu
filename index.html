@@ -60,61 +60,111 @@
   .reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s ease, transform .9s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
-  /* ---------- Hero ---------- */
+  /* ---------- Hero (blood red w/ white card) ---------- */
   .hero {
-    min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    padding-top: 70px;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 34px; position: relative; overflow: hidden;
+    background: #6e0012;
+    background-image:
+      radial-gradient(circle at 90% 8%, rgba(255,255,255,.05), transparent 30%),
+      radial-gradient(circle at 8% 92%, rgba(255,255,255,.05), transparent 30%),
+      linear-gradient(135deg, #7a0014 0%, #5e0010 100%);
   }
+  .hero-card {
+    background: #fffafa; width: 100%; max-width: 1040px;
+    border-radius: 14px; padding: clamp(28px, 5vw, 56px) clamp(20px, 5vw, 60px) clamp(40px, 6vw, 64px);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,.6);
+    text-align: center; position: relative; z-index: 1;
+  }
+  .hero-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: clamp(14px, 4vw, 36px); gap: 12px;
+  }
+  .hero-side {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    font-size: .62rem; letter-spacing: 2px; color: #9a8b8d; font-weight: 500;
+    writing-mode: initial; min-width: 80px;
+  }
+  .hero-side .arrow { font-size: 1.1rem; color: #9b0014; animation: bob 1.8s ease-in-out infinite; }
+  .hero-year {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #2b2426;
+    line-height: 1; min-width: 80px; text-align: right;
+  }
+  .hero-year small { font-size: .55rem; letter-spacing: 3px; color: #9a8b8d; }
   .hero .eyebrow {
-    font-family: 'Dancing Script', cursive; font-size: clamp(1.4rem, 4vw, 2rem);
-    color: var(--pink-deep); margin-bottom: 4px;
+    font-family: 'Dancing Script', cursive; font-size: clamp(1rem, 2.6vw, 1.4rem);
+    color: #9b0014; margin: 6px 0 0; flex: 1; align-self: center;
   }
   .hero h1 {
-    font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1.05;
-    color: var(--ink); margin-bottom: 18px;
-    background: linear-gradient(100deg, var(--pink-deep), #b58cd8);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    font-size: clamp(2.8rem, 10vw, 6rem); line-height: .95; letter-spacing: 1px;
+    color: #1f1a1c; margin: 0 0 14px; text-transform: uppercase;
   }
   .hero p.sub {
     font-family: 'Cormorant Garamond', serif; font-style: italic;
-    font-size: clamp(1.2rem, 3.4vw, 1.7rem); color: var(--ink-soft);
-    max-width: 540px; margin: 0 auto 42px;
+    font-size: clamp(1.1rem, 3vw, 1.5rem); color: #7a6e70;
+    max-width: 520px; margin: 0 auto clamp(28px, 5vw, 44px);
   }
-  .hero-photo {
-    width: clamp(220px, 60vw, 320px); height: clamp(220px, 60vw, 320px);
-    border-radius: 50%; object-fit: cover;
-    border: 8px solid var(--white);
-    box-shadow: var(--shadow);
-    animation: gentle 6s ease-in-out infinite;
+
+  /* polaroids */
+  .polaroids {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 2vw, 26px); flex-wrap: wrap; margin-bottom: 26px;
   }
-  .hero-photo-ring {
-    position: relative; display: inline-block; border-radius: 50%;
-    padding: 6px; background: linear-gradient(135deg, var(--pink), var(--purple));
-    box-shadow: var(--shadow);
+  .polaroid {
+    background: #fff; padding: 10px 10px 16px; margin: 0;
+    box-shadow: 0 16px 34px -14px rgba(0,0,0,.4);
+    transition: transform .35s ease; position: relative;
+  }
+  .polaroid img {
+    display: block; width: clamp(120px, 22vw, 190px); height: clamp(150px, 27vw, 230px);
+    object-fit: cover;
+  }
+  .polaroid.p1 { transform: rotate(-7deg); }
+  .polaroid.p2 { transform: rotate(2deg) translateY(-10px); z-index: 2; }
+  .polaroid.p3 { transform: rotate(8deg); }
+  .polaroid:hover { transform: rotate(0deg) scale(1.04); z-index: 3; }
+  .polaroid .tape {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-4deg);
+    width: 70px; height: 22px; background: rgba(214,196,180,.6);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+  .hero-script {
+    position: absolute; bottom: -14px; left: 8%;
+    font-family: 'Dancing Script', cursive; font-size: clamp(1.6rem, 5vw, 2.6rem);
+    color: #c0143a; transform: rotate(-8deg); z-index: 4; pointer-events: none;
+  }
+  .hero-caption {
+    font-size: .68rem; letter-spacing: 3px; color: #9a8b8d; margin: 6px 0 26px;
   }
   @keyframes gentle { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
+  @media (max-width: 560px) {
+    .hero-top { flex-wrap: wrap; }
+    .hero-side, .hero-year { display: none; }
+    .hero .eyebrow { margin-bottom: 8px; }
+  }
+
   /* ---------- Click Me button ---------- */
   .click-me {
-    margin-top: 38px; border: none; cursor: pointer;
-    font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 1.05rem;
-    color: #fff; padding: 16px 40px; border-radius: 50px;
-    background: linear-gradient(120deg, var(--pink-deep), #b58cd8);
-    box-shadow: 0 14px 30px -10px rgba(196,124,160,.8);
+    margin-top: 6px; border: none; cursor: pointer;
+    font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.02rem;
+    color: #fff; padding: 15px 38px; border-radius: 50px;
+    background: linear-gradient(120deg, #9b0014, #c0143a);
+    box-shadow: 0 14px 30px -10px rgba(155,0,20,.6);
     transition: transform .25s ease, box-shadow .25s ease;
     position: relative; overflow: hidden;
     animation: pulse 2.2s ease-in-out infinite;
   }
-  .click-me:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 20px 40px -10px rgba(181,140,216,.9); }
+  .click-me:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 22px 46px -10px rgba(155,0,20,.7); }
   .click-me:active { transform: scale(.97); }
   @keyframes pulse {
-    0%,100% { box-shadow: 0 14px 30px -10px rgba(196,124,160,.8); }
-    50%     { box-shadow: 0 14px 44px -6px rgba(181,140,216,.95); }
+    0%,100% { box-shadow: 0 14px 30px -10px rgba(155,0,20,.6); }
+    50%     { box-shadow: 0 0 0 10px rgba(192,20,58,.12), 0 14px 40px -8px rgba(155,0,20,.65); }
   }
-  .click-me.playing { animation: none; background: linear-gradient(120deg, #b58cd8, var(--pink-deep)); }
+  .click-me.playing { animation: none; background: #2b2426; }
 
-  .scroll-cue { margin-top: 40px; font-size: 1.6rem; color: var(--pink-deep); animation: bob 1.8s ease-in-out infinite; }
+  .scroll-cue { margin-top: 40px; font-size: 1.6rem; color: rgba(255,255,255,.85); animation: bob 1.8s ease-in-out infinite; }
   @keyframes bob { 0%,100% { transform: translateY(0); opacity:.6 } 50% { transform: translateY(8px); opacity:1 } }
 
   /* ---------- Section heads ---------- */
@@ -267,17 +317,38 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="wrap">
-    <p class="eyebrow reveal">It's your special day</p>
-    <h1 class="reveal">Happy Birthday,<br />My Love ❤️</h1>
-    <p class="sub reveal">Every day with you is my favorite day.</p>
-    <div class="hero-photo-ring reveal">
-      <!-- 👉 Replace src with your photo of the two of you -->
-      <img class="hero-photo" src="photos/us.jpg" alt="The two of us"
-           onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700&q=80'" />
+  <div class="hero-card reveal">
+    <div class="hero-top">
+      <div class="hero-side">
+        <span class="arrow">↓</span>
+        <span>SCROLL DOWN</span>
+      </div>
+      <p class="eyebrow">Happy Birthday, My Love</p>
+      <div class="hero-year">2026<br /><small>FOREVER</small></div>
     </div>
-    <button class="click-me reveal" id="clickMe">Click Me, Birthday Girl 🎵</button>
-    <div class="scroll-cue">⌄</div>
+
+    <h1>HAPPY<br />BIRTHDAY ❤️</h1>
+    <p class="sub">Every day with you is my favorite day.</p>
+
+    <div class="polaroids">
+      <figure class="polaroid p1">
+        <img src="photos/1.jpg" alt="Us"
+             onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&q=80'" />
+      </figure>
+      <figure class="polaroid p2">
+        <img src="photos/us.jpg" alt="Us"
+             onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80'" />
+        <span class="tape"></span>
+      </figure>
+      <figure class="polaroid p3">
+        <img src="photos/2.jpg" alt="Us"
+             onerror="this.src='https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=500&q=80'" />
+      </figure>
+      <span class="hero-script">my love</span>
+    </div>
+
+    <p class="hero-caption">— OUR FAVORITE MOMENTS —</p>
+    <button class="click-me" id="clickMe">Click Me, Birthday Girl 🎵</button>
   </div>
 </section>
 
