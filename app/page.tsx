@@ -21,14 +21,18 @@ const fallbacks = [
 ];
 
 const reasons = [
-  "The way you laugh at your own jokes.",
-  "How safe and at home you make me feel.",
-  "Your kindness to everyone around you.",
-  "The little notes and the way you care.",
-  "How you believe in me, even when I don't.",
-  "Your hugs that fix absolutely everything.",
-  "The way your eyes light up when you're happy.",
-  "Simply because you're you, and that's enough.",
+  "Because no matter what happens, you never leave my side.",
+  "Because you've sacrificed so much for me without expecting anything in return.",
+  "Because your confidence inspires me to be more confident in myself.",
+  "Because I admire the way you stand up for yourself and the people you love.",
+  "Because your attitude towards life is strong, positive, and fearless.",
+  "Because you're kind-hearted, yet you know exactly when to be strong.",
+  "Because you've always believed in me, even during the times I couldn't believe in myself.",
+  "Because your character is beautiful—not just how you look, but who you are as a person.",
+  "Because you make me want to become a better man every single day.",
+  "Because despite all my flaws, mistakes, and imperfections, you still choose me and love me wholeheartedly. ❤️",
+  "Because your smile is the brightest part of my day, no matter how tough things get.",
+  "Because loving you is the easiest, most natural, and most beautiful thing I have ever done.",
 ];
 
 const POP_GLYPHS = ["🌸", "💖", "🌷", "💕", "🌹", "💗", "🌼", "❤️", "💐", "✨", "🌺"];
